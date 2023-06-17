@@ -42,7 +42,7 @@ class QuoteTableViewController: UITableViewController, SKPaymentTransactionObser
     }
 
     // MARK: - Table view data source
-
+// this function is responsible for showing the number of cells required
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isPurchased() {
             return quotesToShow.count
@@ -51,7 +51,7 @@ class QuoteTableViewController: UITableViewController, SKPaymentTransactionObser
         }
     }
 
- 
+ //populates the cells with the array values
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuoteCell", for: indexPath)
 
@@ -76,7 +76,7 @@ class QuoteTableViewController: UITableViewController, SKPaymentTransactionObser
         if indexPath.row == quotesToShow.count {
             buyPremiumQuotes()
         }
-        
+        // when selected have th grey highlight go automatically
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -84,6 +84,7 @@ class QuoteTableViewController: UITableViewController, SKPaymentTransactionObser
     // MARK: - In-App Purchase Methods
     
     func buyPremiumQuotes() {
+        //returns boolean if the user can make payments or not
         if SKPaymentQueue.canMakePayments() {
             //Can make payments
             
